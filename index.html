@@ -21,10 +21,28 @@
           position="0 1 0.1" 
           text="value: Cargando datos...; color: white; align: center; width: 4;"></a-entity>
       </a-marker>
+
+      <!-- Segundo marcador -->
+      <a-marker type="pattern" url="pattern-marker2.patt">
+        <!-- Caja roja -->
+        <a-plane 
+          position="0 1 0" 
+          width="2.5" 
+          height="1.5" 
+          color="red" 
+          material="opacity: 0.7;"></a-plane>
+        <!-- Texto dinámico -->
+        <a-entity 
+          id="info-text-2" 
+          position="0 1 0.1" 
+          text="value: Cargando datos...; color: white; align: center; width: 4;"></a-entity>
+      </a-marker>
+
       <a-entity camera></a-entity>
     </a-scene>
 
     <script>
+      // Función para obtener los datos del primer marcador
       async function fetchFirstMarkerData() {
         try {
           const response = await fetch('https://bdslsxny7g.execute-api.us-east-1.amazonaws.com/cit/almacen/pieza/all');
@@ -46,7 +64,31 @@
         }
       }
 
+      // Función para obtener los datos del segundo marcador
+      async function fetchSecondMarkerData() {
+        try {
+          const response = await fetch('https://0wg4kcfdq9.execute-api.us-east-1.amazonaws.com/cit/celda/estatus/all');
+          const data = await response.json();
+
+          const filteredData = data[0].Estatus.filter(item => 
+            ["DP-STOP", "DP-START", "DP-RESET"].includes(item.dataPointId)
+          ).map(item => {
+            return `${item.dataPointId}: ${item.value}`;
+          });
+
+          const displayText = filteredData.join('\n');
+          const infoText2 = document.querySelector("#info-text-2");
+          infoText2.setAttribute("text", `value: ${displayText}; color: white; align: center; width: 4;`);
+        } catch (error) {
+          console.error("Error al obtener los datos del segundo marcador:", error);
+          const infoText2 = document.querySelector("#info-text-2");
+          infoText2.setAttribute("text", `value: Error al cargar datos; color: red; align: center; width: 4;`);
+        }
+      }
+
+      // Llama a ambas funciones para cargar los datos
       fetchFirstMarkerData();
+      fetchSecondMarkerData();
     </script>
   </body>
 </html>
