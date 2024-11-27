@@ -8,8 +8,18 @@
     <a-scene embedded arjs>
       <!-- Usando tu marcador personalizado -->
       <a-marker type="pattern" url="pattern-marker.patt">
-        <!-- Contenedor para mostrar datos -->
-        <a-entity id="info-text" position="0 1 0" text="value: Cargando datos...; color: white;"></a-entity>
+        <!-- Caja de fondo azul -->
+        <a-plane 
+          position="0 1 0" 
+          width="2.5" 
+          height="1.5" 
+          color="blue" 
+          material="opacity: 0.7;"></a-plane>
+        <!-- Texto dinámico -->
+        <a-entity 
+          id="info-text" 
+          position="0 1 0.1" 
+          text="value: Cargando datos...; color: white; align: center; width: 4;"></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
@@ -33,16 +43,19 @@
 
           // Mostrar los datos en el marcador
           const infoText = document.querySelector("#info-text");
-          infoText.setAttribute("text", `value: ${displayText}; color: white;`);
+          infoText.setAttribute("text", `value: ${displayText}; color: white; align: center; width: 4;`);
         } catch (error) {
           console.error("Error al obtener los datos:", error);
           const infoText = document.querySelector("#info-text");
-          infoText.setAttribute("text", `value: Error al cargar datos; color: red;`);
+          infoText.setAttribute("text", `value: Error al cargar datos; color: red; align: center; width: 4;`);
         }
       }
 
       // Llama a la función al cargar la página
       fetchData();
     </script>
+  </body>
+</html>
+
   </body>
 </html>
