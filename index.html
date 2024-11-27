@@ -8,7 +8,6 @@
     <a-scene embedded arjs>
       <!-- Primer marcador -->
       <a-marker type="pattern" url="pattern-marker.patt">
-        <!-- Caja negra elevada -->
         <a-plane 
           position="0 0.1 0" 
           rotation="-90 0 0" 
@@ -16,7 +15,6 @@
           height="1.5" 
           color="black" 
           material="opacity: 0.7;"></a-plane>
-        <!-- Texto dinámico visible desde arriba y elevado -->
         <a-entity 
           id="info-text-1" 
           position="0 0.2 0" 
@@ -26,7 +24,6 @@
 
       <!-- Segundo marcador -->
       <a-marker type="pattern" url="pattern-depositphotos_506437654-stock-photo-red-number-drawn-gouache-isolated (1).patt">
-        <!-- Caja roja elevada -->
         <a-plane 
           position="0 0.1 0" 
           rotation="-90 0 0" 
@@ -34,7 +31,6 @@
           height="1.5" 
           color="red" 
           material="opacity: 0.7;"></a-plane>
-        <!-- Texto dinámico visible desde arriba y elevado -->
         <a-entity 
           id="info-text-2" 
           position="0 0.2 0" 
@@ -44,7 +40,6 @@
 
       <!-- Tercer marcador -->
       <a-marker type="pattern" url="pattern-1681821818_kartinki-pibig-info-p-dvoika-kartinka-arti-vkontakte-25.patt">
-        <!-- Caja azul elevada -->
         <a-plane 
           position="0 0.1 0" 
           rotation="-90 0 0" 
@@ -52,14 +47,14 @@
           height="1.5" 
           color="blue" 
           material="opacity: 0.7;"></a-plane>
-        <!-- Texto dinámico visible desde arriba y elevado -->
         <a-entity 
           id="info-text-3" 
           position="0 0.2 0" 
           rotation="-90 0 0"  
           text="value: Cargando datos...; color: white; align: center; width: 4;"></a-entity>
       </a-marker>
-       <!-- Marca 1 -->
+
+      <!-- Marcadores estáticos -->
       <a-marker type="pattern" url="pattern-desktop-wallpaper-v-letter-black.patt">
         <a-plane 
           position="0 0.1 0" 
@@ -74,7 +69,8 @@
           rotation="-90 0 0" 
           text="value: Encargado de programación PLC y robot UR; color: white; align: center; width: 4;"></a-entity>
       </a-marker>
-       <a-marker type="pattern" url="pattern-pp,504x498-pad,600x600,f8f8f8.patt">
+
+      <a-marker type="pattern" url="pattern-pp,504x498-pad,600x600,f8f8f8.patt">
         <a-plane 
           position="0 0.1 0" 
           rotation="-90 0 0" 
@@ -83,12 +79,12 @@
           color="purple" 
           material="opacity: 0.7;"></a-plane>
         <a-entity 
-          id="info-marca1" 
+          id="info-marca2" 
           position="0 0.2 0" 
           rotation="-90 0 0" 
           text="value: Encargado de programación en Mendix; color: white; align: center; width: 4;"></a-entity>
       </a-marker>
-       <!-- Marca 3 -->
+
       <a-marker type="pattern" url="pattern-fposter,small,wall_texture,square_product,600x600.u1.patt">
         <a-plane 
           position="0 0.1 0" 
@@ -103,7 +99,7 @@
           rotation="-90 0 0" 
           text="value: Encargado de programación del AGV; color: white; align: center; width: 4;"></a-entity>
       </a-marker>
-        <!-- Marca 4 -->
+
       <a-marker type="pattern" url="pattern-depositphotos_213861292-stock-photo-black-icon-white-background.patt">
         <a-plane 
           position="0 0.1 0" 
@@ -118,7 +114,7 @@
           rotation="-90 0 0" 
           text="value: Encargado de modelado 3D y gemelo digital; color: white; align: center; width: 4;"></a-entity>
       </a-marker>
-        <!-- Marca 5 -->
+
       <a-marker type="pattern" url="pattern-png-clipart-letter-case-blackletter-wood-letter-r-angle-logo.patt">
         <a-plane 
           position="0 0.1 0" 
@@ -133,7 +129,7 @@
           rotation="-90 0 0" 
           text="value: Encargado de modelo de inteligencia artificial; color: white; align: center; width: 4;"></a-entity>
       </a-marker>
-      <!-- Marca 6 -->
+
       <a-marker type="pattern" url="pattern-inverted_image.patt">
         <a-plane 
           position="0 0.1 0" 
@@ -148,7 +144,7 @@
           rotation="-90 0 0" 
           text="value: Encargado de InsightHubs, AWS y página web; color: white; align: center; width: 3.5;"></a-entity>
       </a-marker>
-      
+
       <a-entity camera></a-entity>
     </a-scene>
 
@@ -170,8 +166,6 @@
           infoText1.setAttribute("text", `value: ${displayText}; color: white; align: center; width: 4;`);
         } catch (error) {
           console.error("Error al obtener los datos del primer marcador:", error);
-          const infoText1 = document.querySelector("#info-text-1");
-          infoText1.setAttribute("text", `value: Error al cargar datos; color: red; align: center; width: 4;`);
         }
       }
 
@@ -192,8 +186,6 @@
           infoText2.setAttribute("text", `value: ${displayText}; color: white; align: center; width: 4;`);
         } catch (error) {
           console.error("Error al obtener los datos del segundo marcador:", error);
-          const infoText2 = document.querySelector("#info-text-2");
-          infoText2.setAttribute("text", `value: Error al cargar datos; color: red; align: center; width: 4;`);
         }
       }
 
@@ -214,15 +206,15 @@
           infoText3.setAttribute("text", `value: ${displayText}; color: white; align: center; width: 4;`);
         } catch (error) {
           console.error("Error al obtener los datos del tercer marcador:", error);
-          const infoText3 = document.querySelector("#info-text-3");
-          infoText3.setAttribute("text", `value: Error al cargar datos; color: red; align: center; width: 4;`);
         }
       }
 
-      // Llama a todas las funciones para cargar los datos
-      fetchFirstMarkerData();
-      fetchSecondMarkerData();
-      fetchThirdMarkerData();
+      // Actualizar información cada segundo
+      setInterval(() => {
+        fetchFirstMarkerData();
+        fetchSecondMarkerData();
+        fetchThirdMarkerData();
+      }, 1000);
     </script>
   </body>
 </html>
